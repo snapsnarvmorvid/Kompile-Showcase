@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Kompile architecture</title>
+  <desc>How Kompile is built and how it runs: game sources and the UI library go through a Python build step into a release and a dev launcher; at runtime the launcher detects the game, loads its module on the Kompile UI library, and the module's engines write to local logs and Discord webhooks.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b6b78"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="600" rx="16" fill="#0f0f14"/>
+
+  <text x="32" y="44" font-size="20" font-weight="600" fill="#f1f0f7">Kompile architecture</text>
+  <text x="32" y="68" font-size="13" fill="#9a99a8">Build time (top) and run time (bottom)</text>
+
+  <!-- BUILD -->
+  <text x="32" y="106" font-size="12" font-weight="600" fill="#9b5cff" letter-spacing="1.5">BUILD</text>
+
+  <rect x="32" y="120" width="200" height="96" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="48" y="146" font-size="14" font-weight="600" fill="#f1f0f7">Game modules</text>
+  <text x="48" y="168" font-size="12" fill="#9a99a8">Bloodlines · Ryujin</text>
+  <text x="48" y="186" font-size="12" fill="#9a99a8">Grand Piece Online · Huss Valley</text>
+  <text x="48" y="204" font-size="12" fill="#9a99a8">~43,000 lines of Luau</text>
+
+  <rect x="32" y="232" width="200" height="64" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="48" y="258" font-size="14" font-weight="600" fill="#f1f0f7">Kompile UI library</text>
+  <text x="48" y="280" font-size="12" fill="#9a99a8">custom, ~2,500 lines</text>
+
+  <rect x="300" y="150" width="250" height="116" rx="10" fill="#1d1630" stroke="#9b5cff"/>
+  <text x="316" y="176" font-size="14" font-weight="600" fill="#f1f0f7">Build pipeline (Python)</text>
+  <text x="316" y="198" font-size="12" fill="#c9c2e6">strips dev-only blocks</text>
+  <text x="316" y="216" font-size="12" fill="#c9c2e6">bundles UI + modules, bumps version</text>
+  <text x="316" y="234" font-size="12" fill="#c9c2e6">compile + static-analysis gates</text>
+  <text x="316" y="252" font-size="12" fill="#c9c2e6">must match between both builds</text>
+
+  <rect x="620" y="120" width="300" height="64" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="636" y="146" font-size="14" font-weight="600" fill="#f1f0f7">Release launcher</text>
+  <text x="636" y="168" font-size="12" fill="#9a99a8">licensed, delivered to customers</text>
+
+  <rect x="620" y="232" width="300" height="64" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="636" y="258" font-size="14" font-weight="600" fill="#f1f0f7">Dev launcher</text>
+  <text x="636" y="280" font-size="12" fill="#9a99a8">test tools, probes, experiments</text>
+
+  <line x1="232" y1="168" x2="296" y2="196" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="232" y1="264" x2="296" y2="232" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="192" x2="616" y2="156" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="550" y1="226" x2="616" y2="262" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <line x1="32" y1="326" x2="928" y2="326" stroke="#2c2c38" stroke-dasharray="4 6"/>
+
+  <!-- RUN -->
+  <text x="32" y="360" font-size="12" font-weight="600" fill="#9b5cff" letter-spacing="1.5">RUN</text>
+
+  <rect x="32" y="374" width="180" height="84" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="48" y="400" font-size="14" font-weight="600" fill="#f1f0f7">Launcher</text>
+  <text x="48" y="422" font-size="12" fill="#9a99a8">detects the game,</text>
+  <text x="48" y="440" font-size="12" fill="#9a99a8">loads its module</text>
+
+  <rect x="262" y="374" width="190" height="84" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="278" y="400" font-size="14" font-weight="600" fill="#f1f0f7">Interface</text>
+  <text x="278" y="422" font-size="12" fill="#9a99a8">menu, status cards,</text>
+  <text x="278" y="440" font-size="12" fill="#9a99a8">configs, notifications</text>
+
+  <rect x="502" y="352" width="200" height="214" rx="10" fill="#1d1630" stroke="#9b5cff"/>
+  <text x="518" y="378" font-size="14" font-weight="600" fill="#f1f0f7">Feature engines</text>
+  <text x="518" y="402" font-size="12" fill="#c9c2e6">boss farm + auto dodge</text>
+  <text x="518" y="422" font-size="12" fill="#c9c2e6">progression (quests, missions)</text>
+  <text x="518" y="442" font-size="12" fill="#c9c2e6">movement (travel, hover)</text>
+  <text x="518" y="462" font-size="12" fill="#c9c2e6">combat (parry, aim)</text>
+  <text x="518" y="482" font-size="12" fill="#c9c2e6">ESP + world visuals</text>
+  <text x="518" y="502" font-size="12" fill="#c9c2e6">server hopping + rejoin</text>
+  <text x="518" y="522" font-size="12" fill="#c9c2e6">safety (danger response)</text>
+  <text x="518" y="542" font-size="12" fill="#c9c2e6">economy (selling, buying)</text>
+
+  <rect x="752" y="374" width="168" height="84" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="768" y="400" font-size="14" font-weight="600" fill="#f1f0f7">Telemetry</text>
+  <text x="768" y="422" font-size="12" fill="#9a99a8">logs, black box,</text>
+  <text x="768" y="440" font-size="12" fill="#9a99a8">fight + AI analysis</text>
+
+  <rect x="752" y="482" width="168" height="84" rx="10" fill="#17171f" stroke="#2c2c38"/>
+  <text x="768" y="508" font-size="14" font-weight="600" fill="#f1f0f7">Discord</text>
+  <text x="768" y="530" font-size="12" fill="#9a99a8">webhooks: loot, inventory,</text>
+  <text x="768" y="548" font-size="12" fill="#9a99a8">update logs</text>
+
+  <line x1="212" y1="416" x2="258" y2="416" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="452" y1="416" x2="498" y2="416" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="702" y1="416" x2="748" y2="416" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="702" y1="524" x2="748" y2="524" stroke="#6b6b78" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>
