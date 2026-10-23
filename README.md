@@ -18,7 +18,7 @@
 
 Kompile is a script hub for Roblox games that I designed, wrote, and maintain on my own. It loads into a game, detects which one it's in, and gives the player a full in-game menu of automation, combat, visual and quality-of-life features built specifically for that game.
 
-The largest module, for the game **Bloodlines**, is about **37,000 lines** of Luau with **120+ toggles and 70+ actions**. Kompile is sold to customers with license keys and a Discord community. I ship versioned updates often, sometimes several in a day, and keep it working through the target game's own updates.
+The largest module, for the game **Bloodlines**, is about **44,000 lines** of Luau with **130+ toggles and 100+ actions**. Kompile is sold to customers with license keys and a Discord community. I ship versioned updates often, sometimes several in a day, and keep it working through the target game's own updates.
 
 > **Note:** this repository is a showcase. The source code is private, so nothing here is code from the project.
 
@@ -27,9 +27,9 @@ The largest module, for the game **Bloodlines**, is about **37,000 lines** of Lu
 | | |
 |---|---|
 | **Supported games** | Bloodlines, Ryujin, Grand Piece Online, Huss Valley |
-| **Code** | ~43,000 lines across game modules, plus a ~2,500-line UI library |
+| **Code** | ~50,000 lines across game modules, plus a ~4,400-line UI library |
 | **Interface** | 8 tabs, 55+ feature panels, live status cards, configs per account |
-| **Releases** | Versioned public updates (v1.3 to v1.13 in October 2026), release and dev channels |
+| **Releases** | Versioned public updates (v1.3 to v1.24 in October 2026), release and dev channels |
 | **Tooling** | Python build pipeline, static analysis gates, binary file parser, in-game recorders |
 
 ## Screenshots
@@ -53,7 +53,7 @@ The largest module, for the game **Bloodlines**, is about **37,000 lines** of Lu
 </p>
 
 - **Game modules.** One module per game. Each owns its features and talks to the shared interface.
-- **Kompile UI library.** My own UI framework: windows, tabs, panels, toggles, sliders, dropdowns, keybinds, color pickers, notifications, theming and scaling. It also powers the live status cards.
+- **Kompile UI library.** My own UI framework: windows, tabs, panels, toggles, sliders, searchable dropdowns, keybinds (toggle and hold), color pickers with transparency, a live ESP preview panel, custom rows, a search bar that finds any setting, tooltips, a keybind list, a watermark, notifications, configs with autoload, theming and scaling. It also powers the live status cards.
 - **Build pipeline.** A Python script assembles each launcher from the sources. It strips the dev-only code out of the release build, bumps the version, and checks both builds with a compiler and a static analyzer before anything ships. If the two builds disagree, it doesn't ship.
 - **Two channels.** A **release** launcher for customers, and a **dev** launcher with test buttons, probes and experiments. A feature lives in dev until it has been tested, then moves to release.
 - **Telemetry.** Every system logs what it decides and why: a "black box" ring buffer, per-fight analysis, death reports, and more. Bugs get diagnosed from data instead of guesses.
@@ -112,7 +112,7 @@ The largest module, for the game **Bloodlines**, is about **37,000 lines** of Lu
 
 ## Companion projects
 
-- **Kompile UI library:** the open UI framework every module is built on, with a showcase of every element.
+- **Kompile UI library:** the open-source UI framework every module is built on ([snapsnarvmorvid/Kompile](https://github.com/snapsnarvmorvid/Kompile)), with a showcase of every element and a small working example hub that runs in any Baseplate.
 - **Kompile Clicker:** a Windows desktop auto clicker in C# / WPF, with a custom theme, a mini window, global input hooks and range-randomized timing.
 - **Kompile website:** landing page and terms of service for the product.
 
